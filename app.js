@@ -17,11 +17,11 @@ dotenv.config({ path: "config/config.env" })
 const reports = require("./routes/ReportRoutes")
 app.use("/", reports)
 
-// const users = require("./routes/UserRoutes")
-// app.use("/", users)
+const users = require("./routes/UserRoutes")
+app.use("/", users)
 
-// const treats = require("./routes/TreatRoutes")
-// app.use("/", treats)
+const treats = require("./routes/TreatRoutes")
+app.use("/", treats)
 
 // error middleware
 

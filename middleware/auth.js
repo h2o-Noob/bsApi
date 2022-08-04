@@ -1,5 +1,5 @@
 const ErrorHandler = require("../utils/errorHandler");
-const userSchema = require("../models/userModel");
+const userSchema = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
 
 // authentication
