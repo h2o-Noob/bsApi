@@ -6,7 +6,7 @@ const { isAuthenticatedUser } = require("../middleware/auth");
 const router = express.Router()
 
 router
-.route("/reports")
+.route("/")
 // .post(isAuthenticatedUser, createReport)
 // .get(getAllReports)
 .get(test)
