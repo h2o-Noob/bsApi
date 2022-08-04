@@ -1,6 +1,5 @@
 const express = require("express");
 const { createReport, getAllReports, getReportDetails, updateReport, deleteReport } = require("../controllers/ReportControllers");
-const { test } = require("../controllers/test");
 const { isAuthenticatedUser } = require("../middleware/auth");
 
 const router = express.Router()
