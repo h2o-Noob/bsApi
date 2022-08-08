@@ -6,9 +6,11 @@ const path = require("path")
 const bodyParser = require("body-parser")
 // const fileUpload = require("express-fileUpload")
 const cookieParser = require("cookie-parser")
+var cors = require('cors');
 
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors());
 // app.use(fileUpload())
 app.use(bodyParser.urlencoded({ extended: true }))
 
