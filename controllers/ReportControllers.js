@@ -29,7 +29,7 @@ exports.getAllReports = async (req, res, next) => {
     
     const resultPerPage = 8
 
-    const apiFeatures = new ApiFeatures(reportSchema.find(), req.query)
+    const apiFeatures = new ApiFeatures(reportSchema.find().populate("user", "name avatar email"), req.query)
       .search()
       .pagination(resultPerPage);
 
