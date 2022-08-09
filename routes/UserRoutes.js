@@ -29,7 +29,7 @@ router
 
 router
 .route("/me")
-.get( getUserDetails)
+.get(isAuthenticatedUser, getUserDetails)
 
 router
 .route("/me/password/update")
