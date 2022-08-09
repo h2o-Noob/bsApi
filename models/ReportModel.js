@@ -46,6 +46,11 @@ const reportSchema = new mongoose.Schema({
   numberOfAnimals: {
     type: Number,
     default: 0,
+    required: true
+  },
+  aid: {
+    type: String,
+    required: true
   },
   user: {
     type: mongoose.Schema.ObjectId,

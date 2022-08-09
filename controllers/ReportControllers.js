@@ -21,7 +21,7 @@ exports.createReport = async (req, res, next) => {
     } catch (error) {
       next(new ErrorHandler(error))
     }
-  };
+};
 
 // get all reports
 exports.getAllReports = async (req, res, next) => {
