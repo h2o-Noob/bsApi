@@ -17,13 +17,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 dotenv.config({ path: "config/config.env" })
 
 const reports = require("./routes/ReportRoutes")
-app.use("/", reports)
+app.use("/api", reports)
 
 const users = require("./routes/UserRoutes")
-app.use("/", users)
+app.use("/api", users)
 
 const treats = require("./routes/TreatRoutes")
-app.use("/", treats)
+app.use("/api", treats)
 
 // error middleware
 
