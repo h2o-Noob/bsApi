@@ -4,7 +4,7 @@ const dotenv = require("dotenv")
 const app = express();
 const path = require("path")
 const bodyParser = require("body-parser")
-const fileUpload = require("express-fileUpload")
+const fileUpload = require("express-fileupload")
 const cookieParser = require("cookie-parser")
 var cors = require('cors');
 
