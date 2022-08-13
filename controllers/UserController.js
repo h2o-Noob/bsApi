@@ -7,6 +7,7 @@ exports.registerUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
+    console.log(name, email, password)
     const User = await userSchema.create({
       name,
       email,
@@ -25,13 +26,12 @@ exports.registerUser = async (req, res, next) => {
         new ErrorHandler(`a user with that ${dup} already exists`, 400)
       );
     }
+    return next( new ErrorHandler(err))
 
-    if ((Object.keys(err)[0])) {
-      return next(
-        new ErrorHandler(`${fault} requires minimum 3 charecters`, 400)
-      );
-    }
-    res.status(400).json(err.message)
+    // let fault = Object.keys(err.errors)[0];
+    // return next(
+    //   new ErrorHandler(`${fault} requires minimum 3 charecters`, 400)
+    // );
   }
 };
 
@@ -188,18 +188,21 @@ exports.getSingleUser = async (req, res, next) => {
 // update roles
 exports.updateRole = async (req, res, next) => {
   try {
-
     const newUserData = {
       name: req.body.name,
       email: req.body.email,
       role: req.body.role,
     };
-  
-    const User = await userSchema.findByIdAndUpdate(req.params.id, newUserData, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    });
+
+    const User = await userSchema.findByIdAndUpdate(
+      req.params.id,
+      newUserData,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
 
     res.status(200).json({
       success: true,
@@ -214,18 +217,17 @@ exports.updateRole = async (req, res, next) => {
 // delete user
 exports.deleteUser = async (req, res, next) => {
   try {
-
     const User = await userSchema.findByIdAndDelete(req.params.id);
 
-    if(!User){
-      next(new ErrorHandler(`user with id: ${req.params.id} not found`))
+    if (!User) {
+      next(new ErrorHandler(`user with id: ${req.params.id} not found`));
     }
 
-    await User.remove()
+    await User.remove();
 
     res.status(200).json({
       success: true,
-      message: "user removed successfully"
+      message: "user removed successfully",
     });
   } catch (error) {
     res.status(400).json(error.message);
