@@ -1,5 +1,5 @@
 const express = require("express");
-const { createReport, getAllReports, getReportDetails, updateReport, deleteReport } = require("../controllers/ReportControllers");
+const { createReport, getAllReports, getReportDetails, updateReport, deleteReport, myReports } = require("../controllers/ReportControllers");
 const { isAuthenticatedUser } = require("../middleware/auth");
 
 const router = express.Router()
@@ -10,8 +10,12 @@ router
 .get(getAllReports)
 
 router
+.route("/me/reports")
+.get(isAuthenticatedUser, myReports)
+
+router
 .route("/report/:id")
-.get(isAuthenticatedUser, getReportDetails)
+.get(getReportDetails)
 .put(isAuthenticatedUser, updateReport)
 .delete(isAuthenticatedUser, deleteReport)
 

@@ -45,6 +45,20 @@ exports.getAllReports = async (req, res, next) => {
   }
 }
 
+// user reports
+exports.myReports = async (req, res, next) => {
+  try {
+    const reports = await reportSchema.find({ user: req.User._id });
+
+    res.status(200).json({
+      success: true,
+      reports,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(error, 404));
+  }
+};
+
 // get report details
 exports.getReportDetails = async (req, res, next) => {
   try {

@@ -1,5 +1,5 @@
 const express = require("express")
-const { createNewTreat, getSingleTreat, myTreats, allTreats, updateTreat, deletTreat } = require("../controllers/TreatController")
+const { createNewTreat, getSingleTreat, myTreats, allTreats, updateTreat, deletTreat, getReportTreats } = require("../controllers/TreatController")
 const { isAuthenticatedUser, authorizedRole } = require("../middleware/auth");
 
 const router = express.Router()
@@ -11,6 +11,10 @@ router
 router
 .route("/treat/:id")
 .get(isAuthenticatedUser, getSingleTreat)
+
+router
+.route("/treat/report/:id")
+.get(isAuthenticatedUser, getReportTreats)
 
 router
 .route("/treats/me")
