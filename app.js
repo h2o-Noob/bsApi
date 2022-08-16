@@ -29,7 +29,7 @@ const treats = require("./routes/TreatRoutes")
 app.use("/api", treats)
 
 // payment route
-const payment = require("./routes/paymentRoutes");
+const payment = require("./routes/PaymentRoutes");
 app.use("/api", payment);
 
 // error middleware
