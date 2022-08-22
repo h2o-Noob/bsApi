@@ -1,9 +1,10 @@
 const app = require("./app");
-const dotenv = require("dotenv");
 const connectDatabase = require("./config/database");
 var cloudinary = require('cloudinary');
 
-dotenv.config({ path: "config/config.env" });
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({ path: "server/config/config.env" });
+}
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -12,7 +13,7 @@ cloudinary.config({
 })
 
 const server = app.listen(process.env.PORT || 5000, () => {
-  console.log(`server listening at http://localhost:${process.env.PORT}`);
+  console.log(`server listening at http://localhost:5000`);
   connectDatabase();
 });
 
